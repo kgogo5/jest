@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import "@testing-library/jest-dom/extend-expect";
+import ToDoList from "./toDoList/ToDoList";
 
 function App({ user }: { user?: { name?: string } }) {
   return (
@@ -12,7 +12,6 @@ function App({ user }: { user?: { name?: string } }) {
           <div>
             <h2>로그인 해주세요</h2>
           </div>
-          <button>Login</button>
         </div>
       )}
     </div>
