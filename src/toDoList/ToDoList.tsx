@@ -9,7 +9,7 @@ const ToDoList = () => {
     axios
       .get("https://jsonplaceholder.typicode.com/todos")
       .then((response: any) => {
-        setList(response.data);
+        setList(response?.data);
       })
       .catch(() => {
         seterrorMessage("Error...");
@@ -19,21 +19,24 @@ const ToDoList = () => {
   return (
     <>
       <h2>To Do List</h2>
-      {errorMessage && <p>{errorMessage}</p>}
-      <ul>
-        {list?.map((todo: any) => {
-          return (
-            <li
-              key={todo.id}
-              style={{
-                textDecoration: todo.completed ? "line-through" : undefined,
-              }}
-            >
-              {todo.title}
-            </li>
-          );
-        })}
-      </ul>
+      {errorMessage ? (
+        <p>{errorMessage}</p>
+      ) : (
+        <ul>
+          {list?.map((todo: any) => {
+            return (
+              <li
+                key={todo.id}
+                style={{
+                  textDecoration: todo.completed ? "line-through" : undefined,
+                }}
+              >
+                {todo.title}
+              </li>
+            );
+          })}
+        </ul>
+      )}
     </>
   );
 };

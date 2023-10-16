@@ -4,3 +4,9 @@
 // learn more: https://github.com/testing-library/jest-dom
 import "@testing-library/jest-dom";
 import "@testing-library/jest-dom/extend-expect";
+
+// 해당 테스트에서만 mocking이 작동 되도록 설정
+import { server } from "./mocks/server";
+beforeAll(() => server.listen());
+afterEach(() => server.resetHandlers());
+afterAll(() => server.close());
